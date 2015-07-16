@@ -69,9 +69,6 @@ angular.module('buddyClientApp', [
                 $state.go('anon.login');
             } else {
                 var intercomUser = CurrentUser.intercomUser();
-                intercomUser.app_id = 'nv0lz1xn';
-                intercomUser.widget = {activator: '#Intercom'};
-                window.Intercom("boot", intercomUser);
                 $rootScope.$watch(function() { return Auth.isClinician }, function(oldVal, newVal) {
                     if (newVal) {
                         $rootScope.$evalAsync(function() {
@@ -311,11 +308,4 @@ Array.prototype.remove = function() {
 $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
     event.preventDefault();
     $(this).ekkoLightbox();
-});
-
-$(document).ready(function() {
-    $("#Intercom").click(function(e) {
-        e.preventDefault();
-        Intercom('show');
-    });
 });
